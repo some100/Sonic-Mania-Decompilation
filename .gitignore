@@ -247,3 +247,6 @@ android/local.properties
 
 *.res
 dependencies/*
+
+# Web specific
+Settings.ini
