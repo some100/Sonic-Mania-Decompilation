@@ -1369,12 +1369,12 @@ typedef struct {
 
     // Authorization
     void (*ClearPrerollErrors)(void);
-    void (*TryAuth)(void);
+    int32 (*TryAuth)(void);
     int32 (*GetUserAuthStatus)(void);
     bool32 (*GetUsername)(String *userName);
 
     // Storage
-    void (*TryInitStorage)(void);
+    int32 (*TryInitStorage)(void);
     int32 (*GetStorageStatus)(void);
     int32 (*GetSaveStatus)(void);
     void (*ClearSaveStatus)(void);
@@ -1386,8 +1386,8 @@ typedef struct {
     bool32 (*GetNoSave)(void);
 
     // User File Management
-    void (*LoadUserFile)(const char *name, void *buffer, uint32 size, void (*callback)(int32 status)); // load user file from game dir
-    void (*SaveUserFile)(const char *name, void *buffer, uint32 size, void (*callback)(int32 status), bool32 compressed); // save user file to game dir
+    bool32 (*LoadUserFile)(const char *name, void *buffer, uint32 size, void (*callback)(int32 status)); // load user file from game dir
+    bool32 (*SaveUserFile)(const char *name, void *buffer, uint32 size, void (*callback)(int32 status), bool32 compressed); // save user file to game dir
     void (*DeleteUserFile)(const char *name, void (*callback)(int32 status)); // delete user file from game dir
 
     // User DBs
